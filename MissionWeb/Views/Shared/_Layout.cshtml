@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
+    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    @Styles.Render("~/Content/css")
+    @*Scripts.Render("~/bundles/modernizr")*@
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    @if ((ViewData["Logon"] != null))
+    {
+        if (Convert.ToBoolean(ViewData["Logon"]))
+        {
+            <div class="primary-nav btn-list">
+                <button href="#" class="hamburger open-panel nav-toggle">
+                    <span class="screen-reader-text">Menu</span>
+                </button>
+                <nav role="navigation" class="menu">
+                    <a href="Index" class="logotype">LOGO<span>TYPE</span></a>
+                    <div class="overflow-container">
+                        @Html.Raw(ViewBag.DOM_TreeViewMenu)
+                    </div>
+                </nav>
+            </div>
+        }
+    }
+    <div class="new-wrapper">
+        <div id="main">
+            <div id="main-contents">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+        @if ((ViewData["Logon"] != null))
+        {
+            if (Convert.ToBoolean(ViewData["Logon"]))
+            {
+                @Html.Raw(ViewBag.DOM_TreeViewMenuScript)
+            }
+        }
+</script>
