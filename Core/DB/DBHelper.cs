@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace Core.DB
 {
@@ -30,16 +31,8 @@ namespace Core.DB
         }
 
 
-        public void CloseSqlConnection()
-        {
-            connection.Close();
-        }
-        private static string GetConnectionString() =>
-            // To avoid storing the connection string in your code, 
-            // you can retrieve it from a configuration file.
-            //return @"Server=.\SQLEXPRESS;Database=arduinowater;"
-            //    + "User Id = sa; Password =1qaz@WSX";
-            System.Configuration.ConfigurationSettings.AppSettings["ConStr"];
+        public void CloseSqlConnection() => connection.Close();
+        private static string GetConnectionString() => ConfigurationManager.AppSettings["ConStr"];
 
         public  SqlDataReader GetSqlDataReader(string acc, string pw)
         {

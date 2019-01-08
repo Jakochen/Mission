@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using Core.DB;
 using BizService;
+using NLog;
 
 namespace MissionWeb.Controllers
 {
@@ -14,6 +15,7 @@ namespace MissionWeb.Controllers
     {
         int childcnt = 1; //子選單計數
         DBHelper dB = new DBHelper();//DB 操作
+        Logger logger = LogManager.GetCurrentClassLogger();
         public ActionResult Login()
         {
             ViewBag.Message = "請登入";
@@ -52,6 +54,7 @@ namespace MissionWeb.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Login(string username, string Password)
         {
+            logger.Info("User: " + username+" Login.");
             Account account = new Account();
             // 登入的密碼（以 SHA1 加密）
             Password = FormsAuthentication.HashPasswordForStoringInConfigFile(Password, "SHA1");
