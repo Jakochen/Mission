@@ -5,26 +5,34 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Core.DB;
-using BizService;
+
+using Core.Utility;
+using DBO.EMP;
+using DBO.SYS;
+using Models.DataModel;
 using NLog;
+using DataTableExtensions = Core.Utility.DataTableExtensions;
 
 namespace MissionWeb.Controllers
 {
     public class HomeController : Controller
     {
         int childcnt = 1; //子選單計數
-        DBHelper dB = new DBHelper();//DB 操作
+        //DBHelper dB = new DBHelper();//DB 操作
         Logger logger = LogManager.GetCurrentClassLogger();
+        MenuService menuService = new MenuService();
+        AccountService accountService = new AccountService();
+
         public ActionResult Login()
         {
+            ViewBag.Title = "Mission Login Page";
             ViewBag.Message = "請登入";
             return View();
         }
 
         public ActionResult Index()
         {
-            ViewData.Add("Logon", IsLogon());
+            ViewData.Add("Logon", accountService.IsLogon(Session["UserName"].ToString()));
             ViewBag.DOM_TreeViewMenu = Session["MenuHtml"];
             ViewBag.DOM_TreeViewMenuScript = Session["MenuScript"];
             return View();
@@ -32,7 +40,7 @@ namespace MissionWeb.Controllers
 
         public ActionResult About()
         {
-            ViewData.Add("Logon", IsLogon());
+            ViewData.Add("Logon", accountService.IsLogon(Session["UserName"].ToString()));
             ViewBag.DOM_TreeViewMenu = Session["MenuHtml"];
             ViewBag.DOM_TreeViewMenuScript = Session["MenuScript"];
 
@@ -43,7 +51,7 @@ namespace MissionWeb.Controllers
 
         public ActionResult Contact()
         {
-            ViewData.Add("Logon", IsLogon());
+            ViewData.Add("Logon", accountService.IsLogon(Session["UserName"].ToString()));
             ViewBag.DOM_TreeViewMenu = Session["MenuHtml"];
             ViewBag.DOM_TreeViewMenuScript = Session["MenuScript"];
             ViewBag.Message = "Your contact page.";
@@ -51,16 +59,14 @@ namespace MissionWeb.Controllers
             return View();
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
+        [HttpPost]
         public ActionResult Login(string username, string Password)
         {
-            logger.Info("User: " + username+" Login.");
-            Account account = new Account();
+            logger.Info("User: " + username+" Login.");//寫log
             // 登入的密碼（以 SHA1 加密）
-            Password = FormsAuthentication.HashPasswordForStoringInConfigFile(Password, "SHA1");
-
-            //這一條是去資料庫抓取輸入的帳號密碼的方法請自行實做
-            var LoginData = account.GetSingleAccount(username, Password);
+            Password = Encryption.GetSwcSH1(Password);
+            //取得登入帳密比對結果
+            var LoginData = accountService.GetSingleAccount(username, Password);
 
             if (LoginData == null)
             {
@@ -69,7 +75,8 @@ namespace MissionWeb.Controllers
             }
             else
             {
-                account.UpdateAccount(username, Password);
+                //
+                accountService.UpdateAccountLoginState(username, Password, "1");
             }
             // 登入時清空所有 Session 資料
             Session.RemoveAll();
@@ -93,20 +100,14 @@ namespace MissionWeb.Controllers
 
         }
 
-        private string IsLogon()
-        {
-            //判斷使用者是否已登入，以便許可載入選單
-            DataTable dt = new DataTable();
-            dt = dB.GetDataTableFromDb("select IsLogon from ArduinoWater_User where UserName = '" + Session["UserName"].ToString() + "'");
-            return dt.Rows[0]["IsLogon"].ToString();
-        }
 
         #region 取得 MENU
         private string PopulateMenuDataTable()
         {
             string DOM = "";
             DataTable dt = new DataTable();
-            dt = dB.GetAllCategories();
+            dt = menuService.queryMenu();
+            List<Menu> menus = DataTableExtensions.ToList<Menu>(dt).ToList();
             DOM = GetDOMTreeView(dt);
 
             return DOM;

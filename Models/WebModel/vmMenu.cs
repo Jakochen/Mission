@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Models.DataModel;
 
-namespace Models
+namespace Models.WebModel
 {
-    public class Class1
+    public class VmMenu : Menu
     {
+
     }
 }
