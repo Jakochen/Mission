@@ -7,8 +7,8 @@
     <ProjectGuid>{150CA367-F736-47F9-AB9C-2FBA683A4B5D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BizService</RootNamespace>
-    <AssemblyName>BizService</AssemblyName>
+    <RootNamespace>DBO</RootNamespace>
+    <AssemblyName>DBO</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
