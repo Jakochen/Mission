@@ -28,7 +28,7 @@ namespace MissionWeb.Controllers
         [HttpPost]
         public ActionResult Login(string username, string Password)
         {
-            logger.Info("User: " + username + " Login Start");//寫log
+            //logger.Info("User: " + username + " Login Start");//寫log
             // 登入的密碼（以 SHA1 加密）
             Password = Encryption.GetSwcSH1(Password);
             //取得登入帳密比對結果
@@ -37,7 +37,9 @@ namespace MissionWeb.Controllers
             if (LoginData == null)
             {
                 TempData["Error"] = "您輸入的帳號不存在或者密碼錯誤!";
-                logger.Info("User: " + username + "," + TempData["Error"]);//寫log
+                //logger.Info("User: " + username + "," + TempData["Error"]);//寫log
+                ViewBag.Title = "Mission Login Page";
+                ViewBag.Message = "請登入";
                 return View();
             }
             else

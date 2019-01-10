@@ -53,6 +53,9 @@
     <Compile Include="DataModel\Employees.cs">
       <DependentUpon>Mission.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\LogError.cs" />
+    <Compile Include="DataModel\LogExtError.cs" />
+    <Compile Include="DataModel\LogInfo.cs" />
     <Compile Include="DataModel\Menu.cs">
       <DependentUpon>Mission.tt</DependentUpon>
     </Compile>

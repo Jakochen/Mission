@@ -51,7 +51,14 @@ namespace DAO.EMP
             parameters.Add(_IdbHelp.InputParameter("acc", act));
             parameters.Add(_IdbHelp.InputParameter("pw", pw));
             DataTable dt = _IdbHelp.GetDataTable(sql, parameters);
-            return DataTableExtensions.ToList<Employees>(dt).ToList()[0];
+            if (dt.Rows.Count > 0)
+            {
+                return DataTableExtensions.ToList<Employees>(dt).ToList()[0];
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public int UpdateAccountLoginState(string acc, string pw, string LogonState)

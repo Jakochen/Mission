@@ -18,6 +18,13 @@ namespace MissionWeb
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Login", action = "Login", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                "404-NotFound",
+                "{*url}",
+                new { controller = "Error", action = "NotFound" }
+            );
         }
+
     }
 }
