@@ -33,6 +33,11 @@ namespace DAO.EMP
 
         IDbHelper _IdbHelp = new SqlDbHelper();
 
+        /// <summary>
+        /// 判斷登入使用者登入狀態
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public DataTable IsLogonUser(string username)
         {
             string sql = @"select IsLogon from Employees where UserName = @username";
@@ -42,6 +47,12 @@ namespace DAO.EMP
             return _IdbHelp.GetDataTable(sql, parameters);
         }
 
+        /// <summary>
+        /// 驗證使用者登入帳密
+        /// </summary>
+        /// <param name="act"></param>
+        /// <param name="pw"></param>
+        /// <returns></returns>
         public Employees Login(string act, string pw)
         {
             Employees emp = new Employees();
@@ -61,6 +72,13 @@ namespace DAO.EMP
             }
         }
 
+        /// <summary>
+        /// 變更登入使用者登入狀態
+        /// </summary>
+        /// <param name="acc"></param>
+        /// <param name="pw"></param>
+        /// <param name="LogonState"></param>
+        /// <returns></returns>
         public int UpdateAccountLoginState(string acc, string pw, string LogonState)
         {
             string sql = @"Update Employees Set IsLogon = @LogonState, LastLogonTime=SYSDATETIME() where UserName=@acc and Password=@pw";

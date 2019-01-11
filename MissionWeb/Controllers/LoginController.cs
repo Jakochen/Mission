@@ -15,7 +15,6 @@ namespace MissionWeb.Controllers
 {
     public class LoginController : Controller
     {
-        Logger logger = LogManager.GetCurrentClassLogger();
         AccountService accountService = new AccountService();
 
         public ActionResult Login()
@@ -37,7 +36,6 @@ namespace MissionWeb.Controllers
             if (LoginData == null)
             {
                 TempData["Error"] = "您輸入的帳號不存在或者密碼錯誤!";
-                //logger.Info("User: " + username + "," + TempData["Error"]);//寫log
                 ViewBag.Title = "Mission Login Page";
                 ViewBag.Message = "請登入";
                 return View();

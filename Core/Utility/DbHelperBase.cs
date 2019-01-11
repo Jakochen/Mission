@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Core.Utility
 {
-
     /// <summary>
     /// 資料庫存取輔助功能
     /// </summary>
@@ -471,7 +470,6 @@ namespace Core.Utility
 
         private bool GetDynamicListCallBack(List<dynamic> entityList, IDataReader reader, int number)
         {
-            //entityList.Add(new DataRecordDynamicWrapper(reader));
             var expandoObject = new ExpandoObject() as IDictionary<string, object>;
             for (var i = 0; i < reader.FieldCount; i++)
             {
@@ -481,23 +479,6 @@ namespace Core.Utility
             entityList.Add(expandoObject);
             return false;
         }
-
-        //@TODO: Reader 改為 yield return 機制
-        //private class DataRecordDynamicWrapper : DynamicObject
-        //{
-        //    private IDataRecord _dataRecord;
-
-        //    public DataRecordDynamicWrapper(IDataRecord dataRecord)
-        //    {
-        //        _dataRecord = dataRecord;
-        //    }
-
-        //    public override bool TryGetMember(GetMemberBinder binder, out object result)
-        //    {
-        //        result = _dataRecord[binder.Name];
-        //        return result != null;
-        //    }
-        //}
         #endregion
     }
 }

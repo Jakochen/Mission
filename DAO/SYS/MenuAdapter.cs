@@ -33,6 +33,10 @@ namespace DAO.SYS
         IDbHelper _IdbHelp = new SqlDbHelper();
 
         #region MENU
+        /// <summary>
+        /// 取得網站功能清單MENU
+        /// </summary>
+        /// <returns></returns>
         public DataTable GetAllMenuTree()
         {
             string sql = @"SELECT MenuNumber, ParentNumber, MenuName, Uri, Icon FROM Menu";

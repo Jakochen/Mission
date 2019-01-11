@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using System.Web.Http.Controllers;
-//using System.Web.Http.Filters;
 using System.Web.Mvc;
 using Models.DataModel;
 using NLog;
 
 namespace MissionWeb.Filter
 {
+    /// <summary>
+    /// 使每個 action 皆可記錄動作資訊
+    /// </summary>
     public class LogFilterAttribute : ActionFilterAttribute, IActionFilter
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();

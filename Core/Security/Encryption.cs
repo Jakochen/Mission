@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Core.Utility
 {
+    /// <summary>
+    /// 加密
+    /// </summary>
     public static class Encryption
     {
         /// <summary>
@@ -16,14 +19,6 @@ namespace Core.Utility
         /// <returns></returns>
         public static string GetSwcSH1(string value)
         {
-            //SHA1 algorithm = SHA1.Create();
-            //byte[] data = algorithm.ComputeHash(Encoding.UTF8.GetBytes(value));
-            //string sh1 = "";
-            //for (int i = 0; i < data.Length; i++)
-            //{
-            //    sh1 += data[i].ToString("x2").ToUpperInvariant();
-            //}
-            //return sh1;
             SHA256 sha256 = new SHA256CryptoServiceProvider();
             byte[] source = Encoding.Default.GetBytes(value);
             byte[] crypto = sha256.ComputeHash(source);

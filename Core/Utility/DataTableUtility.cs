@@ -8,8 +8,17 @@ using System.Threading.Tasks;
 
 namespace Core.Utility
 {
+    /// <summary>
+    /// Datatable 延伸方法
+    /// </summary>
     public static class DataTableExtensions
     {
+        /// <summary>
+        /// Datatable ToList<T>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="table"></param>
+        /// <returns></returns>
         public static IList<T> ToList<T>(this DataTable table) where T : new()
         {
             IList<PropertyInfo> properties = typeof(T).GetProperties().ToList();

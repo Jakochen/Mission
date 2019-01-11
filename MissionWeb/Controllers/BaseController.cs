@@ -8,6 +8,9 @@ namespace MissionWeb.Controllers
 {
     public class BaseController : Controller
     {
+        /// <summary>
+        /// 頁面共用程式碼
+        /// </summary>
         public void PageInfo()
         {
             ViewData.Add("Logon", Session["Logon"]);

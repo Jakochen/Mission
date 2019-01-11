@@ -176,10 +176,7 @@ namespace Core.Utility
                     conn = ((SqlConnection)GetConncection());
                     command.Connection = conn;
                 }
-                //if (command.CommandType == CommandType.StoredProcedure)
-                //{
-                //    command.ExecuteNonQuery();
-                //}
+
                 SqlDataAdapter adpter = new SqlDataAdapter(SqlCommand);
                 adpter.Fill(dt);
                 adpter.Dispose();

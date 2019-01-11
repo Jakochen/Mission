@@ -22,7 +22,7 @@ namespace DBO.EMP
         }
 
         /// <summary>
-        /// 取得單一登入
+        /// 驗證登入使用者帳密
         /// </summary>
         /// <param name="acc"></param>
         /// <param name="pw"></param>
