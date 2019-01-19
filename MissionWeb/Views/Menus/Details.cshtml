@@ -1,0 +1,59 @@
+﻿@model Models.DataModel.Menu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Menu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParentNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Icon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Icon)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

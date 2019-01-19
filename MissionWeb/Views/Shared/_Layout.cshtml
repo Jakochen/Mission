@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     @Styles.Render("~/Content/css")
     @*Scripts.Render("~/bundles/modernizr")*@
+    @*@Scripts.Render("~/bundles/bootstrap")*@
     @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
@@ -15,22 +16,46 @@
     {
         if (Convert.ToBoolean(ViewData["Logon"]))
         {
-            <div class="primary-nav btn-list">
-                <button href="#" class="hamburger open-panel nav-toggle">
-                    <span class="screen-reader-text">Menu</span>
-                </button>
-                <nav role="navigation" class="menu">
-                    <a href="Index" class="logotype">LOGO<span>TYPE</span></a>
-                    <div class="overflow-container">
-                        @Html.Raw(ViewBag.DOM_TreeViewMenu)
-                    </div>
-                </nav>
+    <div class="primary-nav btn-list">
+        <button href="#" class="hamburger open-panel nav-toggle">
+            <span class="screen-reader-text">Menu</span>
+        </button>
+        <nav role="navigation" class="menu">
+            <a href="Index" class="logotype">LOGO<span>TYPE</span></a>
+            <div class="overflow-container">
+                @Html.Raw(ViewBag.DOM_TreeViewMenu)
+                <!-- 
+                    因 menu 為動態由 db 產生故無法進行語系切換實作 
+                    暫無語系切換需求，先行註解(語系切換已完成)
+                    -->
+                @*<ul id="langmenu">
+                    <li>
+                        <div>語系切換</div>
+                        <ul>
+                            <li>
+                                <div><span class="ui-icon ui-icon-seek-start"></span>@Html.ActionLink("中文", "SetCulture", "Home", new { culture = "zh-TW", returnUrl = this.Request.RawUrl }, null)</div>
+                            </li>
+                            <li>
+                                <div><span class="ui-icon ui-icon-stop"></span>@Html.ActionLink("English", "SetCulture", "Home", new { culture = "en-US", returnUrl = this.Request.RawUrl }, null)</div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>*@
             </div>
+        </nav>
+    </div>
         }
     }
     <div class="new-wrapper">
         <div id="main">
             <div id="main-contents">
+                @if ((ViewData["Logon"] != null))
+                {
+                    if (Convert.ToBoolean(ViewData["Logon"]))
+                    {
+                        Html.RenderPartial("Infobar"); //載入登入資訊
+                    }
+                }
                 @RenderBody()
             </div>
         </div>
@@ -38,7 +63,7 @@
 </body>
 </html>
 <script>
-        @if ((ViewData["Logon"] != null))
+    @if ((ViewData["Logon"] != null))
         {
             if (Convert.ToBoolean(ViewData["Logon"]))
             {

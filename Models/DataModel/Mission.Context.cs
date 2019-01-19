@@ -27,5 +27,6 @@ namespace Models.DataModel
     
         public virtual DbSet<Employees> Employees { get; set; }
         public virtual DbSet<Menu> Menu { get; set; }
+        public virtual DbSet<LogData> LogData { get; set; }
     }
 }

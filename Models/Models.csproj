@@ -53,6 +53,9 @@
     <Compile Include="DataModel\Employees.cs">
       <DependentUpon>Mission.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\LogData.cs">
+      <DependentUpon>Mission.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\LogError.cs" />
     <Compile Include="DataModel\LogExtError.cs" />
     <Compile Include="DataModel\LogInfo.cs" />
@@ -76,6 +79,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebModel\VmMenu.cs" />
+    <Compile Include="WebModel\VmInfobar.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="DataModel\Mission.edmx">

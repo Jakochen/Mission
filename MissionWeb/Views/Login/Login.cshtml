@@ -1,14 +1,18 @@
-﻿<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿<div id="div_Login">
+    @*<h2>@ViewBag.Title.</h2>
+        <h3>@ViewBag.Message</h3>*@
+    <h2>@Core.Views.Login.Login.WebSiteTitle</h2>
+    <h3>@Core.Views.Login.Login.LoginTipMSG</h3>
 
-@using (Html.BeginForm())
-{
-    <p>帳號：@Html.TextBox("username")</p>
-    <p>密碼：@Html.Password("password")</p>
-    <input type="submit" value="登入" />
-}
-@if (TempData["Error"] != null)
-{
-    <br />
-    <font color="red">@TempData["Error"]</font>
-}
+    @using (Html.BeginForm())
+    {
+        <p>@Core.Views.Login.Login.LoginIDTitle@Html.TextBox("username")</p>
+        <p>@Core.Views.Login.Login.LoginPWTitle@Html.Password("password")</p>
+        <input type="submit" value="登入" />
+    }
+    @if (TempData["Error"] != null)
+    {
+        <br />
+        <font color="red">@TempData["Error"]</font>
+    }
+</div>

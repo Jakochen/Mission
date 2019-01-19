@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings>
+  <Chinese name="Lang">
+    <todaysDate id="todaysDate">現在日期時間: </todaysDate>
+  </Chinese>
+  <English>
+    <todaysDate id="todaysDate">Now DateTime: </todaysDate>
+  </English>
+</Settings>

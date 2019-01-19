@@ -12,13 +12,16 @@ namespace Models.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Menu
+    public partial class LogData
     {
-        public int Id { get; set; }
-        public int MenuNumber { get; set; }
-        public Nullable<int> ParentNumber { get; set; }
-        public string MenuName { get; set; }
-        public string Uri { get; set; }
-        public string Icon { get; set; }
+        public int ID { get; set; }
+        public string MachineName { get; set; }
+        public System.DateTime Logged { get; set; }
+        public string Level { get; set; }
+        public string Message { get; set; }
+        public string Logger { get; set; }
+        public string Properties { get; set; }
+        public string Callsite { get; set; }
+        public string Exception { get; set; }
     }
 }
