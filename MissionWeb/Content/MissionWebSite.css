@@ -4,7 +4,7 @@
     background-color: #eee;
 }
 
- Layout 
+ /*Layout*/ 
 
 #container {
     padding: 0;
@@ -32,7 +32,6 @@
 
 
 /* Menu Styles */
-
 .primary-nav {
     position: fixed;
     z-index: 999;
@@ -241,6 +240,12 @@ input#menu[type="checkbox"] {
     color: #000;
     font-size: 21px;
     padding: 10px;
+
+    /*background-image: url("Images/logo.jpg");*/
+    background-size: 95px;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*border-radius: 50%;*/
 }
 
     .menu a.logotype span {
@@ -613,6 +618,7 @@ h4, .h4 {
         }
 }
 
+/* Login Page Stytle */
 #sec_login {
     width: 500px;
     height: 300px;
