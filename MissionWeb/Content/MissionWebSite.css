@@ -231,8 +231,8 @@ input#menu[type="checkbox"] {
 
 .menu a.logotype {
     position: absolute !important;
-    top: 11px;
-    left: 55px;
+    top: -12px;/*11px;*/ /*文字型+ICONLOGO使用*/
+    left: 40px;/*55px;*/ /*文字型+ICONLOGO使用*/
     display: block;
     font-family: 'Work Sans', sans-serif;
     text-transform: uppercase;
@@ -241,10 +241,10 @@ input#menu[type="checkbox"] {
     font-size: 21px;
     padding: 10px;
 
-    /*background-image: url("Images/logo.jpg");*/
-    background-size: 95px;
+    /*background-image: url("Images/logo.jpg");
+    background-size: 100px;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center;*/
     /*border-radius: 50%;*/
 }
 
