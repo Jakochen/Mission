@@ -61,6 +61,15 @@ namespace Core.Views.Login {
         }
         
         /// <summary>
+        ///   查詢類似 您輸入的帳號不存在或者密碼錯誤! 的當地語系化字串。
+        /// </summary>
+        public static string LoginErrorMsg {
+            get {
+                return ResourceManager.GetString("LoginErrorMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 帳號： 的當地語系化字串。
         /// </summary>
         public static string LoginIDTitle {

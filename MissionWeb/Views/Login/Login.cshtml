@@ -1,18 +1,20 @@
-﻿<div id="div_Login">
-    @*<h2>@ViewBag.Title.</h2>
-        <h3>@ViewBag.Message</h3>*@
-    <h2>@Core.Views.Login.Login.WebSiteTitle</h2>
-    <h3>@Core.Views.Login.Login.LoginTipMSG</h3>
-
-    @using (Html.BeginForm())
-    {
-        <p>@Core.Views.Login.Login.LoginIDTitle@Html.TextBox("username")</p>
-        <p>@Core.Views.Login.Login.LoginPWTitle@Html.Password("password")</p>
-        <input type="submit" value="登入" />
-    }
-    @if (TempData["Error"] != null)
-    {
-        <br />
-        <font color="red">@TempData["Error"]</font>
-    }
-</div>
+﻿<section id="sec_login">
+    <div class="text-center">
+        <h2>@Core.Views.Login.Login.WebSiteTitle</h2>
+        @*<h3>@Core.Views.Login.Login.LoginTipMSG</h3>*@
+        <div class="data-wrap">
+            @using (Html.BeginForm())
+            {
+                <p>@Core.Views.Login.Login.LoginIDTitle@Html.TextBox("username", null, new { id = "input_login_id" })</p>
+                <p>@Core.Views.Login.Login.LoginPWTitle@Html.Password("password", null, new { id = "input_login_pw" })</p>
+                <br/>
+                <input type="submit" id="btn_login" value="登入" />
+            }
+            @if (TempData["Error"] != null)
+            {
+                <br />
+                <p><font color="red">@TempData["Error"]</font></p>
+            }
+        </div>
+    </div>
+</section>

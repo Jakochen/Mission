@@ -36,9 +36,7 @@ namespace MissionWeb.Controllers
 
             if (LoginData == null)
             {
-                TempData["Error"] = "您輸入的帳號不存在或者密碼錯誤!";
-                ViewBag.Title = "Mission Login Page";
-                ViewBag.Message = "請登入";
+                TempData["Error"] = Core.Views.Login.Login.LoginErrorMsg;//"您輸入的帳號不存在或者密碼錯誤!";
                 return View();
             }
             else

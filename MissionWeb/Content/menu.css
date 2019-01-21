@@ -4,7 +4,7 @@
     background-color: #eee;
 }
 
-/* Layout */
+ Layout 
 
 #container {
     padding: 0;
@@ -613,11 +613,21 @@ h4, .h4 {
         }
 }
 
-#div_Login {
-    width: 600px;
+#sec_login {
+    width: 500px;
     height: 300px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -150px 0 0 -300px;
+    margin: -150px 0 0 -250px;
+    display: table;
 }
+
+.text-center {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    #btn_login, .text-center > h2, .text-center > h3, .data-wrap > p, .data-wrap > form {
+        text-align: center;
+    }
